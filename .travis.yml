@@ -1,7 +1,7 @@
 language: java
 jdk: oraclejdk8
 
-script: cd carparkpractice | mvn test -B
+script: mvn -f carparkpractice/pom.xml test -B
 
 cache:
   directories:
