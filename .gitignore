@@ -3,7 +3,6 @@
 
 # Log files
 *.log
-Logs/CPLog.txt
 
 # BlueJ files
 *.ctxt
@@ -28,3 +27,7 @@ hs_err_pid*
 
 # target folder
 target/
+
+# log folder
+logs/*
+!logs/.gitkeep

@@ -1,0 +1,4 @@
+Jun 17, 2019 12:47:00 PM app.App initialiseApp
+SEVERE: Arguments found, System.exit called with status 0
+Jun 17, 2019 12:47:00 PM utils.CPLoggerTest logsToFileAsSevereWhenCalled
+SEVERE: Severe
