@@ -1,0 +1,8 @@
+language: java
+jdk: oraclejdk8
+
+script: mvn -f carparkpractice/pom.xml test -B
+
+cache:
+  directories:
+    - $HOME/.m2
