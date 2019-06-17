@@ -1,7 +1,7 @@
 language: java
 jdk: oraclejdk8
 
-script: mvn test -B
+script: cd carparkpractice | mvn test -B
 
 cache:
   directories:
