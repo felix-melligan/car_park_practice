@@ -1,21 +1,17 @@
 package utils;
 
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import static app.App.LOGGER;
 
 public class CPLoggerTest {
-    private final File file = new File("Logs/CPLog.txt");
+    private final File file = new File("logs/CPLog.txt");
 
     public boolean stringInLogFile(String stringToFind) {
         boolean found = false;

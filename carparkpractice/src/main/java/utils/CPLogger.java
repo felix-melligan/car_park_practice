@@ -26,7 +26,7 @@ public class CPLogger {
         }
 
         logger.setLevel(Level.INFO);
-        fileTxt = new FileHandler("Logs/CPLog.txt");
+        fileTxt = new FileHandler("logs/CPLog.txt");
 
 //        Create the txt formatter
         formatterTxt = new SimpleFormatter();
