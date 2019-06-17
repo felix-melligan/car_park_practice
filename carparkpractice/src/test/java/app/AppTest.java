@@ -1,32 +1,30 @@
 package app;
 
-import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 
-import java.io.File;
-import java.time.LocalDate;
-import java.util.Scanner;
-
 public class AppTest {
-    private final String[] ARGS = {"Arg1"};
-    private final File logFile = new File("CPLog.txt");
-
+    private App app;
     @Rule
     public final ExpectedSystemExit EXIT = ExpectedSystemExit.none();
 
+    @Before
+    public void setUp() {
+        app = new App();
+    }
+
     @Test
     public void mainShouldExitWhenGivenArgumentsAndCallLogger() {
-        boolean hasLine = false;
-        LocalDate date = LocalDate.now();
+        String[] args = {"Args"};
         EXIT.expectSystemExitWithStatus(0);
-        App.main(ARGS);
+        app.initialiseApp(args);
     }
 
     @Test
     public void mainShouldExecuteWithoutExiting() {
         String[] args = {};
-        App.main(args);
+        app.initialiseApp(args);
     }
 }
