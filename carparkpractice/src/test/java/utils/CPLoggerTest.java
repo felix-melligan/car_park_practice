@@ -41,4 +41,28 @@ public class CPLoggerTest {
         LOGGER.severe(message);
         Assert.assertTrue(stringInLogFile(message));
     }
+
+    @Test
+    public void logsToFileAsWarningWhenCalled() {
+        String message = "Warning";
+        LOGGER.setLevel(Level.INFO);
+        LOGGER.warning(message);
+        Assert.assertTrue(stringInLogFile(message));
+    }
+
+    @Test
+    public void logsToFileAsInfoWhenCalled() {
+        String message = "Info";
+        LOGGER.setLevel(Level.INFO);
+        LOGGER.info(message);
+        Assert.assertTrue(stringInLogFile(message));
+    }
+
+    @Test
+    public void doesNotLogAsFinestWhenCalled() {
+        String message = "Finest";
+        LOGGER.setLevel(Level.INFO);
+        LOGGER.finest(message);
+        Assert.assertFalse(stringInLogFile(message));
+    }
 }
