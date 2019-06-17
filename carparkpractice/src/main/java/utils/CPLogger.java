@@ -6,6 +6,11 @@ import java.util.logging.*;
 public class CPLogger {
     static private FileHandler fileTxt;
     static private SimpleFormatter formatterTxt;
+
+    public static boolean isUp() {
+        return isUp;
+    }
+
     private static boolean isUp;
 
     static public void setup() throws IOException {
