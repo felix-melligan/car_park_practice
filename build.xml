@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="car_park_practice" default="all">
+  
+  
+  <property file="build.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.zip"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+    <include name="*.klib"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.12" value="${jdk.home.12}/bin"/>
+  <path id="jdk.classpath.12">
+    <fileset dir="${jdk.home.12}">
+      <include name="../jdk-12!/java.base"/>
+      <include name="../jdk-12!/java.compiler"/>
+      <include name="../jdk-12!/java.datatransfer"/>
+      <include name="../jdk-12!/java.desktop"/>
+      <include name="../jdk-12!/java.instrument"/>
+      <include name="../jdk-12!/java.logging"/>
+      <include name="../jdk-12!/java.management"/>
+      <include name="../jdk-12!/java.management.rmi"/>
+      <include name="../jdk-12!/java.naming"/>
+      <include name="../jdk-12!/java.net.http"/>
+      <include name="../jdk-12!/java.prefs"/>
+      <include name="../jdk-12!/java.rmi"/>
+      <include name="../jdk-12!/java.scripting"/>
+      <include name="../jdk-12!/java.se"/>
+      <include name="../jdk-12!/java.security.jgss"/>
+      <include name="../jdk-12!/java.security.sasl"/>
+      <include name="../jdk-12!/java.smartcardio"/>
+      <include name="../jdk-12!/java.sql"/>
+      <include name="../jdk-12!/java.sql.rowset"/>
+      <include name="../jdk-12!/java.transaction.xa"/>
+      <include name="../jdk-12!/java.xml"/>
+      <include name="../jdk-12!/java.xml.crypto"/>
+      <include name="../jdk-12!/jdk.accessibility"/>
+      <include name="../jdk-12!/jdk.aot"/>
+      <include name="../jdk-12!/jdk.attach"/>
+      <include name="../jdk-12!/jdk.charsets"/>
+      <include name="../jdk-12!/jdk.compiler"/>
+      <include name="../jdk-12!/jdk.crypto.cryptoki"/>
+      <include name="../jdk-12!/jdk.crypto.ec"/>
+      <include name="../jdk-12!/jdk.dynalink"/>
+      <include name="../jdk-12!/jdk.editpad"/>
+      <include name="../jdk-12!/jdk.hotspot.agent"/>
+      <include name="../jdk-12!/jdk.httpserver"/>
+      <include name="../jdk-12!/jdk.internal.ed"/>
+      <include name="../jdk-12!/jdk.internal.jvmstat"/>
+      <include name="../jdk-12!/jdk.internal.le"/>
+      <include name="../jdk-12!/jdk.internal.opt"/>
+      <include name="../jdk-12!/jdk.internal.vm.ci"/>
+      <include name="../jdk-12!/jdk.internal.vm.compiler"/>
+      <include name="../jdk-12!/jdk.internal.vm.compiler.management"/>
+      <include name="../jdk-12!/jdk.jartool"/>
+      <include name="../jdk-12!/jdk.javadoc"/>
+      <include name="../jdk-12!/jdk.jcmd"/>
+      <include name="../jdk-12!/jdk.jconsole"/>
+      <include name="../jdk-12!/jdk.jdeps"/>
+      <include name="../jdk-12!/jdk.jdi"/>
+      <include name="../jdk-12!/jdk.jdwp.agent"/>
+      <include name="../jdk-12!/jdk.jfr"/>
+      <include name="../jdk-12!/jdk.jlink"/>
+      <include name="../jdk-12!/jdk.jshell"/>
+      <include name="../jdk-12!/jdk.jsobject"/>
+      <include name="../jdk-12!/jdk.jstatd"/>
+      <include name="../jdk-12!/jdk.localedata"/>
+      <include name="../jdk-12!/jdk.management"/>
+      <include name="../jdk-12!/jdk.management.agent"/>
+      <include name="../jdk-12!/jdk.management.jfr"/>
+      <include name="../jdk-12!/jdk.naming.dns"/>
+      <include name="../jdk-12!/jdk.naming.rmi"/>
+      <include name="../jdk-12!/jdk.net"/>
+      <include name="../jdk-12!/jdk.pack"/>
+      <include name="../jdk-12!/jdk.rmic"/>
+      <include name="../jdk-12!/jdk.scripting.nashorn"/>
+      <include name="../jdk-12!/jdk.scripting.nashorn.shell"/>
+      <include name="../jdk-12!/jdk.sctp"/>
+      <include name="../jdk-12!/jdk.security.auth"/>
+      <include name="../jdk-12!/jdk.security.jgss"/>
+      <include name="../jdk-12!/jdk.unsupported"/>
+      <include name="../jdk-12!/jdk.unsupported.desktop"/>
+      <include name="../jdk-12!/jdk.xml.dom"/>
+      <include name="../jdk-12!/jdk.zipfs"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value=""/>
+  <property name="project.jdk.bin" value=""/>
+  <property name="project.jdk.classpath" value=""/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.maven:_com.github.stefanbirkner:system-rules:1.3.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/github/stefanbirkner/system-rules/1.3.0/system-rules-1.3.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_junit:junit:4.12.classpath">
+    <pathelement location="${path.variable.maven_repository}/junit/junit/4.12/junit-4.12.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.bytebuddy:byte-buddy-agent:1.9.10.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/bytebuddy/byte-buddy-agent/1.9.10/byte-buddy-agent-1.9.10.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.bytebuddy:byte-buddy:1.9.10.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/bytebuddy/byte-buddy/1.9.10/byte-buddy-1.9.10.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.mockito:mockito-core:2.28.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/mockito/mockito-core/2.28.2/mockito-core-2.28.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.objenesis:objenesis:2.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/objenesis/objenesis/2.6/objenesis-2.6.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <fileset dir="${javac2.home}">
+      <include name="javac2.jar"/>
+      <include name="jdom.jar"/>
+      <include name="asm-all*.jar"/>
+      <include name="forms-*.jar"/>
+    </fileset>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module car_park_practice -->
+  
+  <dirname property="module.car_park_practice.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.car_park_practice" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.car_park_practice" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.car_park_practice" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.car_park_practice" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
+  
+  <property name="car_park_practice.output.dir" value="undefined"/>
+  <property name="car_park_practice.testoutput.dir" value="undefined"/>
+  
+  <path id="car_park_practice.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="car_park_practice.module.production.classpath"/>
+  
+  <path id="car_park_practice.runtime.production.module.classpath"/>
+  
+  <path id="car_park_practice.module.classpath"/>
+  
+  <path id="car_park_practice.runtime.module.classpath"/>
+  
+  
+  <patternset id="excluded.from.module.car_park_practice">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.car_park_practice">
+    <patternset refid="excluded.from.module.car_park_practice"/>
+  </patternset>
+  
+  
+  <target name="compile.module.car_park_practice" depends="compile.module.car_park_practice.production,compile.module.car_park_practice.tests" description="Compile module car_park_practice"/>
+  
+  <target name="compile.module.car_park_practice.production" depends="register.custom.compilers" description="Compile module car_park_practice; production classes"/>
+  
+  <target name="compile.module.car_park_practice.tests" depends="register.custom.compilers,compile.module.car_park_practice.production" description="compile module car_park_practice; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.car_park_practice" description="cleanup module">
+    <delete dir="${car_park_practice.output.dir}"/>
+    <delete dir="${car_park_practice.testoutput.dir}"/>
+  </target>
+  
+  
+  <!-- Module carparkpractice -->
+  
+  <dirname property="module.carparkpractice.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.carparkpractice" value="${jdk.home.12}"/>
+  <property name="module.jdk.bin.carparkpractice" value="${jdk.bin.12}"/>
+  <property name="module.jdk.classpath.carparkpractice" value="jdk.classpath.12"/>
+  
+  <property name="compiler.args.carparkpractice" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="carparkpractice.output.dir" value="${module.carparkpractice.basedir}/carparkpractice/target/classes"/>
+  <property name="carparkpractice.testoutput.dir" value="${module.carparkpractice.basedir}/carparkpractice/target/test-classes"/>
+  
+  <path id="carparkpractice.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="carparkpractice.module.production.classpath">
+    <path refid="${module.jdk.classpath.carparkpractice}"/>
+  </path>
+  
+  <path id="carparkpractice.runtime.production.module.classpath">
+    <pathelement location="${carparkpractice.output.dir}"/>
+  </path>
+  
+  <path id="carparkpractice.module.classpath">
+    <path refid="${module.jdk.classpath.carparkpractice}"/>
+    <pathelement location="${carparkpractice.output.dir}"/>
+    <path refid="library.maven:_junit:junit:4.12.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.mockito:mockito-core:2.28.2.classpath"/>
+    <path refid="library.maven:_net.bytebuddy:byte-buddy:1.9.10.classpath"/>
+    <path refid="library.maven:_net.bytebuddy:byte-buddy-agent:1.9.10.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:2.6.classpath"/>
+    <path refid="library.maven:_com.github.stefanbirkner:system-rules:1.3.0.classpath"/>
+  </path>
+  
+  <path id="carparkpractice.runtime.module.classpath">
+    <pathelement location="${carparkpractice.testoutput.dir}"/>
+    <pathelement location="${carparkpractice.output.dir}"/>
+    <path refid="library.maven:_junit:junit:4.12.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.mockito:mockito-core:2.28.2.classpath"/>
+    <path refid="library.maven:_net.bytebuddy:byte-buddy:1.9.10.classpath"/>
+    <path refid="library.maven:_net.bytebuddy:byte-buddy-agent:1.9.10.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:2.6.classpath"/>
+    <path refid="library.maven:_com.github.stefanbirkner:system-rules:1.3.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.carparkpractice">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.carparkpractice">
+    <patternset refid="excluded.from.module.carparkpractice"/>
+  </patternset>
+  
+  <path id="carparkpractice.module.sourcepath">
+    <dirset dir="${module.carparkpractice.basedir}/carparkpractice">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="carparkpractice.module.test.sourcepath">
+    <dirset dir="${module.carparkpractice.basedir}/carparkpractice">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.carparkpractice" depends="compile.module.carparkpractice.production,compile.module.carparkpractice.tests" description="Compile module carparkpractice"/>
+  
+  <target name="compile.module.carparkpractice.production" depends="register.custom.compilers" description="Compile module carparkpractice; production classes">
+    <mkdir dir="${carparkpractice.output.dir}"/>
+    <javac2 destdir="${carparkpractice.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.carparkpractice}/javac">
+      <compilerarg line="${compiler.args.carparkpractice}"/>
+      <bootclasspath refid="carparkpractice.module.bootclasspath"/>
+      <classpath refid="carparkpractice.module.production.classpath"/>
+      <src refid="carparkpractice.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.carparkpractice"/>
+    </javac2>
+    
+    <copy todir="${carparkpractice.output.dir}">
+      <fileset dir="${module.carparkpractice.basedir}/carparkpractice/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.carparkpractice.basedir}/carparkpractice/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.carparkpractice.tests" depends="register.custom.compilers,compile.module.carparkpractice.production" description="compile module carparkpractice; test classes" unless="skip.tests">
+    <mkdir dir="${carparkpractice.testoutput.dir}"/>
+    <javac2 destdir="${carparkpractice.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.carparkpractice}/javac">
+      <compilerarg line="${compiler.args.carparkpractice}"/>
+      <bootclasspath refid="carparkpractice.module.bootclasspath"/>
+      <classpath refid="carparkpractice.module.classpath"/>
+      <src refid="carparkpractice.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.carparkpractice"/>
+    </javac2>
+    
+    <copy todir="${carparkpractice.testoutput.dir}">
+      <fileset dir="${module.carparkpractice.basedir}/carparkpractice/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.carparkpractice" description="cleanup module">
+    <delete dir="${carparkpractice.output.dir}"/>
+    <delete dir="${carparkpractice.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.car_park_practice, clean.module.carparkpractice" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.car_park_practice, compile.module.carparkpractice" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>
