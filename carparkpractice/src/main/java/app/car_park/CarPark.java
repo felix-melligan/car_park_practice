@@ -8,7 +8,7 @@ public class CarPark {
     private Machine[] machines;
 
     public CarPark() {
-        thisId = ++currentId;
+        this.thisId = ++currentId;
         this.layout = new int[][] {{}};
         this.machines = new Machine[] {};
     }
@@ -29,15 +29,29 @@ public class CarPark {
 
     }
 
+    public CarPark(int[][] layout, Machine[] machines) {
+        this(layout);
+        this.machines = machines;
+    }
+
+    public CarPark(int[][] layout, Machine[] machines, String location) {
+        this(layout, machines);
+        this.location = location;
+    }
+
     public int getId() {
-        return thisId;
+        return this.thisId;
     }
 
     public int[][] getLayout() {
-        return layout;
+        return this.layout;
     }
 
     public String getLocation() {
-        return location;
+        return this.location;
+    }
+
+    public Machine[] getMachines() {
+        return this.machines;
     }
 }

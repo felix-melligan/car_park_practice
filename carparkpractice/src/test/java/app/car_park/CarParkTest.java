@@ -6,6 +6,7 @@ import org.junit.Test;
 public class CarParkTest {
     private final int[][] defaultLayout = {{}};
     private final int[][] layout = {{100, 20}, {100, 20}, {100, 20}};
+    private final Machine[] machines = {new EntryBarrier(), new ExitBarrier(), new PayPoint()};
     private final String location = "London";
 
     @Test
@@ -68,8 +69,26 @@ public class CarParkTest {
     }
 
     @Test
-    public void constructorCanTakeMachineArrayAsArgument() {
-        Machine[] machines = {}
-        CarPark cp1 = new CarPark()
+    public void constructorCanTakeMachineArrayAsArgumentOnlyWithLayout() {
+        CarPark cp1 = new CarPark(layout, machines);
+
+        Assert.assertArrayEquals(machines, cp1.getMachines());
+    }
+
+    @Test
+    public void emptyConstructorSetsMachinesArrayToDefault() {
+        Machine[] defaultMachines = {};
+        CarPark cp1 = new CarPark();
+
+        Assert.assertArrayEquals(defaultMachines, cp1.getMachines());
+    }
+
+    @Test
+    public void canGiveConstructorLayoutMachinesAndLocationAndSetsAll() {
+        CarPark cp1 = new CarPark(layout, machines, location);
+
+        Assert.assertArrayEquals(machines, cp1.getMachines());
+        Assert.assertArrayEquals(layout, cp1.getLayout());
+        Assert.assertEquals(location, cp1.getLocation());
     }
 }
