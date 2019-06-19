@@ -7,13 +7,8 @@ script:
   - cd carparkpractice
   - mvn test -B
 
-before_install:
-  - pip install --user codecov    #Install codecov
-
 after_success:
-  - codecov                       #Run codecov
-
-after_failure: "cat $TRAVIS_BUILD_DIR/app/build/outputs/lint-results-debug.xml"
+  - bash <(curl -s https://codecov.io/bash)
 
 cache:
   directories:
