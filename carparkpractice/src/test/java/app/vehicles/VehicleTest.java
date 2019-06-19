@@ -1,17 +1,11 @@
 package app.vehicles;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
 import utils.Ticket;
 
-@RunWith(PowerMockRunner.class)
-@PrepareForTest(A.class)
+import static org.junit.Assert.assertEquals;
 
 public class VehicleTest {
     private Vehicle v;
@@ -19,7 +13,9 @@ public class VehicleTest {
 
     @Before
     public void setUp() {
-        v = Mockito.make
+        v = Mockito.mock(
+                Vehicle.class,
+                Mockito.withSettings().useConstructor(REG).defaultAnswer(Mockito.CALLS_REAL_METHODS));
     }
 
     @Test
