@@ -1,40 +1,26 @@
 package app.vehicles;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import utils.Ticket;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class CarTest {
+    private static final String REG = "reg";
     private Car c;
-    private String reg = "Car";
 
     @Before
     public void setUp() {
-        c = new Car(reg);
+        c = new Car(REG);
     }
 
     @Test
-    public void setTicketSetsTicket() {
-        Assert.assertNull(c.getTicket());
-
-        Ticket t = new Ticket();
-        c.setTicket(t);
-
-        Assert.assertEquals(t, c.getTicket());
+    public void constructorSetsReg() {
+        assertEquals(REG, c.getReg());
     }
 
     @Test
-    public void getCurrentLevelShowsLevel() {
-    }
-
-    @Test
-    public void getReg() {
-    }
-
-    @Test
-    public void setSpace() {
+    public void carInstanceOfVehicle() {
+        assertTrue(c instanceof Vehicle);
     }
 }
