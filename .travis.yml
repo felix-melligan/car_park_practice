@@ -1,10 +1,20 @@
 language: java
 jdk: oraclejdk11
 
-script: mvn -f carparkpractice/pom.xml install
+script:
+  - echo "Travis branch is $TRAVIS_BRANCH"
+  - echo "Travis branch is in pull request $TRAVIS_PULL+REQUEST"
+  - cd carparkpractice
+  - mvn test -B
+
+before_install:
+  - pip install --user codecov    #Install codecov
 
 after_success:
+  - codecov                       #Run codecov
   - bash <(curl -s https://codecov.io/bash)
+
+after_failure: "cat $TRAVIS_BUILD_DIR/app/build/outputs/lint-results-debug.xml"
 
 cache:
   directories:
