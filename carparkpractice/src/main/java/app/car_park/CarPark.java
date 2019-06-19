@@ -1,5 +1,6 @@
 package app.car_park;
 
+import app.car_park.machines.Machine;
 import utils.Report;
 
 public class CarPark {
