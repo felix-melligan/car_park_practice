@@ -1,17 +1,18 @@
 package app.car_park;
 
+import app.car_park.machines.Machine;
 import utils.Report;
 
 public class CarPark {
-    private static int currentId = 0;
-    private int thisId;
+    private static int classId = 0;
+    private int id;
     private int[][] layout;
     private int[][] availableSpaces;
     private String location;
     private Machine[] machines;
 
     public CarPark() {
-        this.thisId = ++currentId;
+        this.id = classId++;
         this.layout = new int[][] {{}};
         this.machines = new Machine[] {};
         this.availableSpaces = layout;
@@ -48,7 +49,7 @@ public class CarPark {
     }
 
     public int getId() {
-        return this.thisId;
+        return this.id;
     }
 
     public int[][] getLayout() {

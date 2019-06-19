@@ -1,5 +1,8 @@
 package app.car_park;
 
+import app.car_park.machines.EntryBarrier;
+import app.car_park.machines.ExitBarrier;
+import app.car_park.machines.Machine;
 import org.junit.Assert;
 import org.junit.Test;
 import utils.Report;
