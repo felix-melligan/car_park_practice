@@ -1,7 +1,7 @@
 language: java
 jdk: oraclejdk11
 
-script: mvn -f carparkpractice/pom.xml cobertura:cobertura
+script: mvn -f carparkpractice/pom.xml install
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
