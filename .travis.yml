@@ -1,7 +1,14 @@
 language: java
 jdk: oraclejdk11
 
-script: mvn -f carparkpractice/pom.xml test -B
+script:
+  - echo "Travis branch is $TRAVIS_BRANCH"
+  - echo "Travis branch is in pull request $TRAVIS_PULL"
+  - cd carparkpractice
+  - mvn test -B
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 
 cache:
   directories:
