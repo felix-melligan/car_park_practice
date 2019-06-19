@@ -2,6 +2,7 @@ package app.car_park;
 
 import org.junit.Assert;
 import org.junit.Test;
+import utils.Report;
 
 public class CarParkTest {
     private final int[][] defaultLayout = {{}};
@@ -90,5 +91,20 @@ public class CarParkTest {
         Assert.assertArrayEquals(machines, cp1.getMachines());
         Assert.assertArrayEquals(layout, cp1.getLayout());
         Assert.assertEquals(location, cp1.getLocation());
+    }
+
+    @Test
+    public void generateReportCreatesAReport() {
+        CarPark cp1 = new CarPark();
+        Report report = cp1.generateReport(0);
+
+        Assert.assertNotNull(report);
+    }
+
+    @Test
+    public void availableSpacesSetToLayout() {
+        CarPark cp1 = new CarPark(layout, machines, location);
+
+        Assert.assertArrayEquals(layout, cp1.getAvailableSpaces());
     }
 }
