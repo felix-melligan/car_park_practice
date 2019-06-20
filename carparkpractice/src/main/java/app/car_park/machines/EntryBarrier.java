@@ -1,7 +1,6 @@
 package app.car_park.machines;
 
 import app.car_park.CarPark;
-import app.vehicles.Car;
 import app.vehicles.Vehicle;
 import utils.Ticket;
 
@@ -12,9 +11,10 @@ public class EntryBarrier extends TicketBarrier {
 
     @Override
     protected void onVehicleWaiting(Vehicle vehicle) {
-        this.setMessage(Messages.TAKE);
+        setMessage(Messages.CHECKING);
         if (getCarPark().getAvailableSpaces(vehicle) > 0) {
             dispenseTicket();
+            setMessage(Messages.TAKE);
         }
     }
 

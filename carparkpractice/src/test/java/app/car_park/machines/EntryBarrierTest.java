@@ -6,12 +6,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class EntryBarrierTest {
     private EntryBarrier eb;
+    private EntryBarrier ebWithSpaces;
     private static final String REG = "reg";
+    private static final Car CAR = new Car(REG);
     private static final CarPark CARPARK = new CarPark();
 
     @Before
@@ -19,29 +21,38 @@ public class EntryBarrierTest {
         eb = Mockito.mock(
                 EntryBarrier.class,
                 Mockito.withSettings().useConstructor(CARPARK).defaultAnswer(Mockito.CALLS_REAL_METHODS));
+        ebWithSpaces = Mockito.mock(
+                EntryBarrier.class,
+                Mockito.withSettings().useConstructor(new CarPark(new int[][] {{100, 20}})).defaultAnswer(Mockito.CALLS_REAL_METHODS));
     }
 
     @Test
-    public void onCarWaitingCalledWhenCarWaitingSetToTrueSetsMessageToTakeTicket() {
+    public void onCarWaitingCalledWhenCarWaitingSetToTrueSetsMessageToCheckForSpaces() {
         assertEquals(Messages.INIT.getMessage(), eb.getCurrentMessage());
         eb.setVehicleWaiting(new Car(REG));
-        assertEquals(Messages.TAKE.getMessage(), eb.getCurrentMessage());
+        assertEquals(Messages.CHECKING.getMessage(), eb.getCurrentMessage());
     }
 
     @Test
     public void dispenseTicketMethodCalledDuringOnVehicleWaiting() {
-        eb = Mockito.mock(
-                EntryBarrier.class,
-                Mockito.withSettings().useConstructor(new CarPark(new int[][] {{100, 20}})).defaultAnswer(Mockito.CALLS_REAL_METHODS));
-        Mockito.verify(eb, Mockito.times(0)).dispenseTicket();
-        eb.setVehicleWaiting(new Car(REG));
-        Mockito.verify(eb, Mockito.times(1)).dispenseTicket();
+        Mockito.verify(ebWithSpaces, Mockito.times(0)).dispenseTicket();
+        ebWithSpaces.setVehicleWaiting(CAR);
+        Mockito.verify(ebWithSpaces, Mockito.times(1)).dispenseTicket();
     }
 
     @Test
     public void dispenseTicketMethodChecksForSpacesForVehicleBeforeGivingTicket() {
         assertEquals(0, CARPARK.getAvailableSpaces(new Car(REG)));
-        eb.setVehicleWaiting(new Car(REG));
+        eb.setVehicleWaiting(CAR);
         Mockito.verify(eb, Mockito.times(0)).dispenseTicket();
     }
+
+    @Test
+    public void ifBarrierDispensesTicketMessageSetToPleaseTakeTicketVehicleWaitingSetToFalse() {
+        assertNotEquals(Messages.TAKE.getMessage(), ebWithSpaces.getCurrentMessage());
+        ebWithSpaces.setVehicleWaiting(CAR);
+        assertEquals(Messages.TAKE.getMessage(), ebWithSpaces.getCurrentMessage());
+    }
+
+
 }

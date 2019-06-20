@@ -6,6 +6,7 @@ import app.vehicles.Vehicle;
 enum Messages {
     INIT("Initialised"),
     TAKE("Please take a ticket"),
+    CHECKING("Please wait, we are checking for spaces"),
     INSERT("Please insert your ticket"),
     PAID("You have paid, thank you for staying with us"),
     NOTPAID("Please go to a PayPoint to pay the balance on your ticket"),
