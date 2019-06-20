@@ -42,4 +42,11 @@ public class TicketBarrierTest {
         tb.setMessage(Messages.TAKE);
         assertEquals(Messages.TAKE.getMessage(), tb.getCurrentMessage());
     }
+
+    @Test
+    public void canSetCarWaiting() {
+        assertFalse(tb.getCarWaiting());
+        tb.setCarWaiting(true);
+        assertTrue(tb.getCarWaiting());
+    }
 }

@@ -51,4 +51,10 @@ public abstract class TicketBarrier extends Machine {
     public void closeBarrier() {
         this.isOpen = false;
     }
+
+    public void setCarWaiting(boolean value) {
+        this.carWaiting = value;
+    }
+
+    public abstract void onVehicleWaiting();
 }
