@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class EntryBarrierTest {
@@ -29,6 +30,9 @@ public class EntryBarrierTest {
 
     @Test
     public void dispenseTicketMethodCalledDuringOnVehicleWaiting() {
+        eb = Mockito.mock(
+                EntryBarrier.class,
+                Mockito.withSettings().useConstructor(new CarPark(new int[][] {{100, 20}})).defaultAnswer(Mockito.CALLS_REAL_METHODS));
         Mockito.verify(eb, Mockito.times(0)).dispenseTicket();
         eb.setVehicleWaiting(new Car(REG));
         Mockito.verify(eb, Mockito.times(1)).dispenseTicket();
@@ -36,6 +40,8 @@ public class EntryBarrierTest {
 
     @Test
     public void dispenseTicketMethodChecksForSpacesForVehicleBeforeGivingTicket() {
-
+        assertEquals(0, CARPARK.getAvailableSpaces(new Car(REG)));
+        eb.setVehicleWaiting(new Car(REG));
+        Mockito.verify(eb, Mockito.times(0)).dispenseTicket();
     }
 }

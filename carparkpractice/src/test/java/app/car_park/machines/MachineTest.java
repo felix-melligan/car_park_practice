@@ -66,4 +66,9 @@ public class MachineTest {
         m.switchOff();
         assertEquals(State.OFF, m.getState());
     }
+
+    @Test
+    public void canGetContainingCarPark() {
+        assertEquals(CAR_PARK, m.getCarPark());
+    }
 }

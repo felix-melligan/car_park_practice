@@ -6,6 +6,7 @@ import app.car_park.machines.Machine;
 import static org.junit.Assert.*;
 
 import app.car_park.machines.PayPoint;
+import app.vehicles.Car;
 import org.junit.Before;
 import org.junit.Test;
 import utils.Report;
@@ -115,6 +116,6 @@ public class CarParkTest {
     public void availableSpacesSetToLayout() {
         CarPark cp1 = new CarPark(layout, machines, location);
 
-        assertArrayEquals(layout, cp1.getAvailableSpaces());
+        assertEquals(300, cp1.getAvailableSpaces(new Car("reg")));
     }
 }

@@ -25,6 +25,8 @@ public abstract class Machine {
         return this.state;
     }
 
+    public CarPark getCarPark() { return this.containingCarPark; }
+
     public void switchOn() {
         if (this.state == State.OFF) {
             this.state = State.ON;

@@ -1,6 +1,9 @@
 package app.car_park;
 
 import app.car_park.machines.Machine;
+import app.vehicles.Car;
+import app.vehicles.Motorcycle;
+import app.vehicles.Vehicle;
 import utils.Report;
 
 public class CarPark {
@@ -64,8 +67,13 @@ public class CarPark {
         return this.machines;
     }
 
-    public int[][] getAvailableSpaces() {
-        return this.availableSpaces;
+    public int getAvailableSpaces(Vehicle vehicle) {
+        int spacesForVehicle = 0;
+        for (int[] level : this.availableSpaces) {
+            if (vehicle instanceof Car && level.length>0) spacesForVehicle+=level[0];
+            if (vehicle instanceof Motorcycle && level.length>1) spacesForVehicle+=level[1];
+        }
+        return spacesForVehicle;
     }
 
     public Report generateReport(int hoursToReportOn) {
