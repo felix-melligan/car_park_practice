@@ -4,19 +4,26 @@ import app.car_park.machines.EntryBarrier;
 import app.car_park.machines.ExitBarrier;
 import app.car_park.machines.Machine;
 import static org.junit.Assert.*;
+
+import app.car_park.machines.PayPoint;
+import org.junit.Before;
 import org.junit.Test;
 import utils.Report;
 
 public class CarParkTest {
     private final int[][] defaultLayout = {{}};
     private final int[][] layout = {{100, 20}, {100, 20}, {100, 20}};
-    private final Machine[] machines = {new EntryBarrier(), new ExitBarrier(), new PayPoint()};
+    private CarPark cp1;
+    private final Machine[] machines = {new EntryBarrier(cp1), new ExitBarrier(cp1), new PayPoint(cp1)};
     private final String location = "London";
+
+    @Before
+    public void setUp() {
+        cp1 = new CarPark();
+    }
 
     @Test
     public void generateCarPark() {
-        CarPark cp1 = new CarPark();
-
         assertNotNull(cp1.getClass());
     }
 

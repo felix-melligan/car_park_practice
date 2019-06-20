@@ -1,8 +1,15 @@
 package app.car_park.machines;
 
+import app.car_park.CarPark;
+import app.vehicles.Vehicle;
+
 public class ExitBarrier extends TicketBarrier {
+    public ExitBarrier(CarPark carPark) {
+        super(carPark);
+    }
+
     @Override
-    public void onVehicleWaiting() {
+    void onVehicleWaiting(Vehicle vehicle) {
 
     }
 }

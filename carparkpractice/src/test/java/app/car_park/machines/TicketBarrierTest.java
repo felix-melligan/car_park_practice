@@ -1,8 +1,9 @@
 package app.car_park.machines;
 
+import app.car_park.CarPark;
+import app.vehicles.Car;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import static org.junit.Assert.*;
@@ -10,18 +11,21 @@ import static org.mockito.Mockito.times;
 
 public class TicketBarrierTest {
     private TicketBarrier tb;
+    private static final String REG = "reg";
+    private static final Car CAR = new Car(REG);
+    private static final CarPark CAR_PARK = new CarPark();
 
     @Before
     public void setUp() {
         tb = Mockito.mock(
                 TicketBarrier.class,
-                Mockito.withSettings().useConstructor().defaultAnswer(Mockito.CALLS_REAL_METHODS));
+                Mockito.withSettings().useConstructor(CAR_PARK).defaultAnswer(Mockito.CALLS_REAL_METHODS));
     }
 
     @Test
     public void isOpenAndCarWaitingBothSetToFalseOnInstantiation() {
         assertFalse(tb.getIsOpen());
-        assertFalse(tb.getCarWaiting());
+        assertFalse(tb.getVehicleWaiting());
     }
 
     @Test
@@ -47,21 +51,15 @@ public class TicketBarrierTest {
 
     @Test
     public void canSetCarWaiting() {
-        assertFalse(tb.getCarWaiting());
-        tb.setCarWaiting(true);
-        assertTrue(tb.getCarWaiting());
+        assertFalse(tb.getVehicleWaiting());
+        tb.setVehicleWaiting(CAR);
+        assertTrue(tb.getVehicleWaiting());
     }
 
     @Test
     public void whenCarWaitingSetToTrueOnCarWaitingCalled() {
-        Mockito.verify(tb, times(0)).onVehicleWaiting();
-        tb.setCarWaiting(true);
-        Mockito.verify(tb, times(1)).onVehicleWaiting();
-    }
-
-    @Test
-    public void whenCarWaitingSetWithFalseOnCarWaitingNotCalled() {
-        tb.setCarWaiting(false);
-        Mockito.verify(tb, times(0)).onVehicleWaiting();
+        Mockito.verify(tb, times(0)).onVehicleWaiting(CAR);
+        tb.setVehicleWaiting(CAR);
+        Mockito.verify(tb, times(1)).onVehicleWaiting(CAR);
     }
 }

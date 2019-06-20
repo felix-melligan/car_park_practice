@@ -1,11 +1,15 @@
 package app.car_park.machines;
 
+import app.car_park.CarPark;
+import app.vehicles.Vehicle;
+
 enum Messages {
     INIT("Initialised"),
     TAKE("Please take a ticket"),
     INSERT("Please insert your ticket"),
     PAID("You have paid, thank you for staying with us"),
-    NOTPAID("Please go to a PayPoint to pay the balance on your ticket")
+    NOTPAID("Please go to a PayPoint to pay the balance on your ticket"),
+    NOSPACE("Sorry, there are no spaces left for your vehicle")
     ;
 
     private String message;
@@ -21,10 +25,11 @@ enum Messages {
 
 public abstract class TicketBarrier extends Machine {
     private boolean isOpen;
-    private boolean carWaiting;
+    private boolean vehicleWaiting;
     private Messages currentMessage;
 
-    TicketBarrier() {
+    TicketBarrier(CarPark carPark) {
+        super(carPark);
         this.currentMessage = Messages.INIT;
     }
 
@@ -32,8 +37,8 @@ public abstract class TicketBarrier extends Machine {
         return isOpen;
     }
 
-    public boolean getCarWaiting() {
-        return carWaiting;
+    public boolean getVehicleWaiting() {
+        return vehicleWaiting;
     }
 
     public String getCurrentMessage() {
@@ -52,10 +57,10 @@ public abstract class TicketBarrier extends Machine {
         this.isOpen = false;
     }
 
-    public void setCarWaiting(boolean value) {
-        this.carWaiting = value;
-        if (value) onVehicleWaiting();
+    public void setVehicleWaiting(Vehicle vehicle) {
+        this.vehicleWaiting = true;
+        onVehicleWaiting(vehicle);
     }
 
-    public abstract void onVehicleWaiting();
+    abstract void onVehicleWaiting(Vehicle vehicle);
 }

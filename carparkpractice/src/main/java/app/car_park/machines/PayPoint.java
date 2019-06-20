@@ -1,5 +1,6 @@
 package app.car_park.machines;
 
+import app.car_park.CarPark;
 import utils.Ticket;
 
 import java.time.LocalDateTime;
@@ -8,6 +9,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PayPoint extends Machine {
+
+    public PayPoint(CarPark carPark) {
+        super(carPark);
+    }
 
     public void pay(Ticket ticket) {
         ticket.setPaidTrue();
