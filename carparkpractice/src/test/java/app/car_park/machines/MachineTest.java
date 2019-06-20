@@ -3,7 +3,6 @@ package app.car_park.machines;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-import utils.State;
 
 import static org.junit.Assert.assertEquals;
 

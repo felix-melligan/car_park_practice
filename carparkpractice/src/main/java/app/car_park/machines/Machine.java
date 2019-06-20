@@ -1,6 +1,8 @@
 package app.car_park.machines;
 
-import utils.State;
+enum State {
+    OFF, ON
+}
 
 public abstract class Machine {
     private static int classId = 0;
