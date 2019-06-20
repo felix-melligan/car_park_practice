@@ -2,9 +2,11 @@ package app.car_park.machines;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.times;
 
 public class TicketBarrierTest {
     private TicketBarrier tb;
@@ -48,5 +50,18 @@ public class TicketBarrierTest {
         assertFalse(tb.getCarWaiting());
         tb.setCarWaiting(true);
         assertTrue(tb.getCarWaiting());
+    }
+
+    @Test
+    public void whenCarWaitingSetToTrueOnCarWaitingCalled() {
+        Mockito.verify(tb, times(0)).onVehicleWaiting();
+        tb.setCarWaiting(true);
+        Mockito.verify(tb, times(1)).onVehicleWaiting();
+    }
+
+    @Test
+    public void whenCarWaitingSetWithFalseOnCarWaitingNotCalled() {
+        tb.setCarWaiting(false);
+        Mockito.verify(tb, times(0)).onVehicleWaiting();
     }
 }

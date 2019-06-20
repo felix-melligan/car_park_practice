@@ -15,9 +15,9 @@ public class EntryBarrierTest {
 
     @Test
     public void onCarWaitingCalledWhenCarWaitingSetToTrueSetsMessageToTakeTicket() {
-        assertEquals(Messages.INIT, eb.getCurrentMessage());
+        assertEquals(Messages.INIT.getMessage(), eb.getCurrentMessage());
         eb.setCarWaiting(true);
-        assertEquals(Messages.TAKE, eb.getCurrentMessage());
+        assertEquals(Messages.TAKE.getMessage(), eb.getCurrentMessage());
     }
 
 }
