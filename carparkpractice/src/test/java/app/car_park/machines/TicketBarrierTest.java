@@ -4,6 +4,7 @@ import app.car_park.CarPark;
 import app.vehicles.Car;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InOrder;
 import org.mockito.Mockito;
 
 import static org.junit.Assert.*;
@@ -35,11 +36,12 @@ public class TicketBarrierTest {
 
     @Test
     public void canOpenAndCloseBarrier() {
+//        Set InOrder to check order of methods called
+        InOrder inOrder = Mockito.inOrder(tb);
         assertFalse(tb.getIsOpen());
         tb.openBarrier();
-        assertTrue(tb.getIsOpen());
-        tb.closeBarrier();
-        assertFalse(tb.getIsOpen());
+        inOrder.verify(tb, times(1)).openBarrier();
+        inOrder.verify(tb, times(1)).closeBarrier();
     }
 
     @Test

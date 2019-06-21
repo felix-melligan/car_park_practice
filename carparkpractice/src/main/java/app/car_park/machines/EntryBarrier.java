@@ -16,7 +16,6 @@ public class EntryBarrier extends TicketBarrier {
             dispenseTicket();
             setMessage(Messages.TAKE);
             openBarrier();
-            closeBarrier();
         } else {
             setMessage(Messages.NOSPACE);
         }
