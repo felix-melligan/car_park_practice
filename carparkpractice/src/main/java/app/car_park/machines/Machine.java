@@ -1,5 +1,7 @@
 package app.car_park.machines;
 
+import app.car_park.CarPark;
+
 enum State {
     OFF, ON
 }
@@ -8,9 +10,11 @@ public abstract class Machine {
     private static int classId = 0;
     private int id;
     private State state = State.OFF;
+    private CarPark containingCarPark;
 
-    public Machine() {
+    public Machine(CarPark carPark) {
         this.id = this.classId++;
+        this.containingCarPark = carPark;
     }
 
     public int getId() {
@@ -20,6 +24,8 @@ public abstract class Machine {
     public State getState() {
         return this.state;
     }
+
+    public CarPark getCarPark() { return this.containingCarPark; }
 
     public void switchOn() {
         if (this.state == State.OFF) {
