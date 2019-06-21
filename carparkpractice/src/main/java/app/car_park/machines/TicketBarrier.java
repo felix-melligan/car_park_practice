@@ -2,11 +2,12 @@ package app.car_park.machines;
 
 import app.car_park.CarPark;
 import app.vehicles.Vehicle;
+import utils.Ticket;
 
 enum Messages {
     INIT("Initialised"),
-    TAKE("Please take a ticket"),
-    CHECKING("Please wait, we are checking for spaces"),
+    TAKE("Please take ticket"),
+    CHECKING("Checking, please wait..."),
     INSERT("Please insert your ticket"),
     PAID("You have paid, thank you for staying with us"),
     NOTPAID("Please go to a PayPoint to pay the balance on your ticket"),
@@ -52,6 +53,7 @@ public abstract class TicketBarrier extends Machine {
 
     public void openBarrier() {
         this.isOpen = true;
+        closeBarrier();
     }
 
     public void closeBarrier() {
