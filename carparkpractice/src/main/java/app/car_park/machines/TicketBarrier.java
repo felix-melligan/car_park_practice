@@ -10,7 +10,7 @@ enum Messages {
     INSERT("Please insert your ticket"),
     PAID("You have paid, thank you for staying with us"),
     NOTPAID("Please go to a PayPoint to pay the balance on your ticket"),
-    NOSPACE("Sorry, there are no spaces left for your vehicle")
+    NOSPACE("Sorry, there are no spaces left for your vehicle, please wait for one to become available")
     ;
 
     private String message;

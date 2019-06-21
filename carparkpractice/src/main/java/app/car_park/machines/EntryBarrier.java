@@ -15,6 +15,10 @@ public class EntryBarrier extends TicketBarrier {
         if (getCarPark().getAvailableSpaces(vehicle) > 0) {
             dispenseTicket();
             setMessage(Messages.TAKE);
+            openBarrier();
+            closeBarrier();
+        } else {
+            setMessage(Messages.NOSPACE);
         }
     }
 
