@@ -1,5 +1,6 @@
 package app.vehicles;
 
+import app.car_park.CarPark;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -20,7 +21,7 @@ public class VehicleTest {
 
     @Test
     public void setTicketSetsTicketAndGetTicketWorks() {
-        Ticket t = new Ticket();
+        Ticket t = new Ticket(new CarPark());
         v.setTicket(t);
 
         assertEquals(t, v.getTicket());

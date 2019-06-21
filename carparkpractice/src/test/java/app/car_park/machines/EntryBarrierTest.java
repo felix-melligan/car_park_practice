@@ -36,16 +36,16 @@ public class EntryBarrierTest {
 
     @Test
     public void dispenseTicketMethodCalledDuringOnVehicleWaiting() {
-        Mockito.verify(ebWithSpaces, Mockito.times(0)).dispenseTicket();
+        Mockito.verify(ebWithSpaces, Mockito.times(0)).dispenseTicket(CAR);
         ebWithSpaces.setVehicleWaiting(CAR);
-        Mockito.verify(ebWithSpaces, Mockito.times(1)).dispenseTicket();
+        Mockito.verify(ebWithSpaces, Mockito.times(1)).dispenseTicket(CAR);
     }
 
     @Test
     public void dispenseTicketMethodChecksForSpacesForVehicleBeforeGivingTicket() {
-        assertEquals(0, CARPARK.getAvailableSpaces(new Car(REG)));
+        assertEquals(0, CARPARK.getAvailableSpaces(CAR));
         eb.setVehicleWaiting(CAR);
-        Mockito.verify(eb, Mockito.times(0)).dispenseTicket();
+        Mockito.verify(eb, Mockito.times(0)).dispenseTicket(CAR);
     }
 
     @Test

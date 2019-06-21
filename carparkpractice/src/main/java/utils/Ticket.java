@@ -9,8 +9,9 @@ public class Ticket {
     private boolean paid;
     private LocalDateTime entryDateTime;
 
-    public Ticket() {
+    public Ticket(CarPark carPark) {
         this.entryDateTime = LocalDateTime.now();
+        this.carPark = carPark;
     }
 
     public CarPark getCarPark() {
