@@ -13,7 +13,7 @@ public class EntryBarrier extends TicketBarrier {
     protected void onVehicleWaiting(Vehicle vehicle) {
         setMessage(Messages.CHECKING);
         if (getCarPark().getAvailableSpaces(vehicle) > 0) {
-            dispenseTicket();
+            dispenseTicket(vehicle);
             setMessage(Messages.TAKE);
             openBarrier();
         } else {
@@ -21,7 +21,9 @@ public class EntryBarrier extends TicketBarrier {
         }
     }
 
-    protected Ticket dispenseTicket() {
-        return new Ticket();
+    protected Ticket dispenseTicket(Vehicle vehicle) {
+        Ticket ticket = new Ticket(getCarPark());
+        vehicle.setTicket(ticket);
+        return ticket;
     }
 }

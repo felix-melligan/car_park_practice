@@ -22,7 +22,7 @@ public class ExitBarrierTest {
 
     @Before
     public void setUp() {
-        ticket = new Ticket();
+        ticket = new Ticket(CAR_PARK);
         exb = new ExitBarrier(CAR_PARK);
         exbMock = Mockito.mock(exb.getClass(),
                 Mockito.withSettings().useConstructor(CAR_PARK).defaultAnswer(Mockito.CALLS_REAL_METHODS));

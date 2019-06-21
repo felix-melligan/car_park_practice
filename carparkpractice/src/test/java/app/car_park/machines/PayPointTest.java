@@ -12,15 +12,16 @@ import java.time.LocalDateTime;
 import static org.junit.Assert.*;
 
 public class PayPointTest {
+    private static final CarPark CAR_PARK = new CarPark();
     private PayPoint pp;
     private Ticket ticket;
 
     @Before
     public void setUp() {
-        pp = new PayPoint(new CarPark());
+        pp = new PayPoint(CAR_PARK);
         ticket = Mockito.mock(
                 Ticket.class,
-                Mockito.withSettings().useConstructor().defaultAnswer(Mockito.CALLS_REAL_METHODS)
+                Mockito.withSettings().useConstructor(CAR_PARK).defaultAnswer(Mockito.CALLS_REAL_METHODS)
         );
     }
 
