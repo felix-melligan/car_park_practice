@@ -1,5 +1,6 @@
 package app.car_park.machines;
 
+import app.car_park.CarPark;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -16,7 +17,7 @@ public class PayPointTest {
 
     @Before
     public void setUp() {
-        pp = new PayPoint();
+        pp = new PayPoint(new CarPark());
         ticket = Mockito.mock(
                 Ticket.class,
                 Mockito.withSettings().useConstructor().defaultAnswer(Mockito.CALLS_REAL_METHODS)
